@@ -8,12 +8,24 @@ public class QuizController {
 	
 	ArrayList <Rank> rank = new ArrayList<Rank>();
 	
+	ArrayList <QuizQuestion> question = new ArrayList <QuizQuestion>();
+	
 	public void rankData() {
 		rank.add(new Rank("Virat",90));
 		rank.add(new Rank("Ramesh",75));
 		rank.add(new Rank("Jatin",65));
 		rank.add(new Rank("Naveen",80));
 		rank.add(new Rank("Vinod",55));
+		question.add(new QuizQuestion("A. Who wrote India's Nathional Anthem ?","1. Rabindranath Tagore","2. Bankim Chandra Chatterjee",1));
+		question.add(new QuizQuestion("B. What is 50/5 ?","1. 0","2. 10",2));
+		question.add(new QuizQuestion("C. What is 25%2 ?","1. 12.5","2. 1",2));
+		question.add(new QuizQuestion("D. Mumbai is in Maharashtra.","1. False","2. True",2));
+		question.add(new QuizQuestion("E. Where does DGV corporate office situated?","1. Turbhe","2. Vashi",1));
+		question.add(new QuizQuestion("F. Is Java Object Oriented Programming Language?","1. Yes","2. No",1));
+		question.add(new QuizQuestion("G. What is 23-5/5 ?","1. 3.6","2. 22",2));
+		question.add(new QuizQuestion("H. Which is the capital of India ?","1. Delhi","2. Mumbai",1));
+		question.add(new QuizQuestion("I. India's Independence Day is on 15th August.","1. False","2. True",2));
+		question.add(new QuizQuestion("J. Cricket is one of the most viewed sports in India.","1. Yes","2. No",1));
 	}
 	
 	Scanner scanner = new Scanner(System.in);
@@ -21,177 +33,21 @@ public class QuizController {
 	public void generateQuiz(String name) {
 		int score =0;
 		int userChoice;
-		System.out.println();
-		System.out.println("Warning!! You will get +10 points for the right answer! and you will get -5 points also for the wrong answer!");
-		System.out.println("Lets get started!!");
-		System.out.println();
-		System.out.println("A. Who wrote India's Nathional Anthem ?");
-		System.out.println("1. Rabindranath Tagore");
-		System.out.println("2. Bankim Chandra Chatterjee");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incoorect, -5 points");
-			break;
+		System.out.println("Let's get started");
+		for(int i=0;i<question.size();i++) {
+			System.out.println();
+			System.out.println(question.get(i).getQuestion());
+			System.out.println(question.get(i).getOption1());
+			System.out.println(question.get(i).getOption2());
+			userChoice=scanner.nextInt();
+			if(userChoice==question.get(i).getCorrectOption()) {
+				score+=10;
+				System.out.println("Correct, points +10");
+			}else {
+				score-=5;
+				System.out.println("Incorrect, points -5");
+			}
 		}
-		}
-		System.out.println();
-		System.out.println("B. What is 50/5 ?");
-		System.out.println("1. 0");
-		System.out.println("2. 10");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 2:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("C. What is 25%2 ?");
-		System.out.println("1. 12");
-		System.out.println("2. 12.5");
-		System.out.println("3. 1");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 3:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("D. Mumbai is in Maharashtra.");
-		System.out.println("1. False");
-		System.out.println("2. True");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 2:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("E. Where does DGV corporate office situated?");
-		System.out.println("1. Nerul");
-		System.out.println("2. Vashi");
-		System.out.println("3. Turbhe");
-		System.out.println("4. Seawoods");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 3:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("F. Is Java Object Oriented Programming Language?");
-		System.out.println("1. Yes");
-		System.out.println("2. No");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("G. What is 23-5/5 ?");
-		System.out.println("1. 22");
-		System.out.println("2. 3.6");
-		System.out.println("3. 3");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("H. Which is the capital of India ?");
-		System.out.println("1. Mumbai");
-		System.out.println("2. Chennai");
-		System.out.println("3. Banglore");
-		System.out.println("4. Delhi");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 4:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("I. India's Independence Day is on 15th August.");
-		System.out.println("1. True");
-		System.out.println("2. False");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
-		System.out.println("J. Cricket is one of the most viewed sports in India.");
-		System.out.println("1. Yes");
-		System.out.println("2. No");
-		System.out.println("3. Cannot be determined");
-		userChoice = scanner.nextInt();
-		switch(userChoice) {
-		case 1:{
-			System.out.println("Correct, +10 points");
-			score+=10;
-			break;
-		}default:{
-			score-=5;
-			System.out.println("Incorrect, -5 points");
-			break;
-		}
-		}
-		System.out.println();
 		System.out.println("Your final score is "+score);
 		rank.add(new Rank(name,score));
 	}
